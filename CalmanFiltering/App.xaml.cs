@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using CalmanFiltering.ViewModels;
+using CalmanFiltering.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -25,8 +26,9 @@ namespace CalmanFiltering
 
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection services)
         {
-            services.AddSingleton((MainWindow) Current.MainWindow);
-            services.AddSingleton<MainWindowViewModel>();
+            services
+               .AddViewModels()
+               .AddViews();
         }
 
         public static string CurrentDirectory => IsDesignTime ? Path.GetDirectoryName(GetSourceCodePath()) : Environment.CurrentDirectory;
