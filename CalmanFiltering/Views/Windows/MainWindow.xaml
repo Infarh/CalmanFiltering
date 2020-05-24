@@ -31,9 +31,9 @@
 
                     <oxy:LinearAxis Position="Bottom" PositionAtZeroCrossing="True" Title="t [с]"/>
                 </oxy:Plot.Axes>
-                <oxy:LineSeries ItemsSource="{Binding Axeleration}" YAxisKey="Axeleration"/>
-                <oxy:LineSeries ItemsSource="{Binding Speed}" Color="Blue" YAxisKey="Speed"/>
-                <oxy:LineSeries ItemsSource="{Binding Movement}" Color="Black" YAxisKey="Movement"/>
+                <oxy:LineSeries ItemsSource="{Binding Axeleration}" YAxisKey="Axeleration" Title="Ускорение"/>
+                <oxy:LineSeries ItemsSource="{Binding Speed}" Color="Blue" YAxisKey="Speed" Title="Скорость"/>
+                <oxy:LineSeries ItemsSource="{Binding Movement}" Color="Black" YAxisKey="Movement" Title="Перемещение"/>
             </oxy:Plot>
         </Grid>
     </DockPanel>
