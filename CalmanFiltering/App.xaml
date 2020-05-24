@@ -5,11 +5,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:l="clr-namespace:CalmanFiltering"
              xmlns:vm="clr-namespace:CalmanFiltering.ViewModels"
+             xmlns:oxy="http://oxyplot.org/wpf"
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
          <ResourceDictionary>
 
             <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
+
+            <Style TargetType="oxy:Plot">
+                <Setter Property="Padding" Value="30"/>
+                <Setter Property="PlotAreaBorderThickness" Value="0"/>
+            </Style>
+
+            <Style TargetType="oxy:LineSeries">
+                <Setter Property="Color" Value="Red"/>
+                <Setter Property="DataFieldX" Value="X"/>
+                <Setter Property="DataFieldY" Value="Y"/>
+            </Style>
+
+            <Style TargetType="oxy:LinearAxis">
+                <Style.Triggers>
+                    <Trigger Property="PositionAtZeroCrossing" Value="True">
+                        <Setter Property="AxislineThickness" Value="2"/>
+                        <Setter Property="AxislineStyle" Value="Solid"/>
+                        <Setter Property="TitlePosition" Value="0.02"/>
+                        <Setter Property="AxisTitleDistance" Value="-40"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
          </ResourceDictionary>
     </Application.Resources>
 </Application>

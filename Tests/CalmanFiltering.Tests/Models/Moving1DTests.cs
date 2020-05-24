@@ -36,12 +36,12 @@ namespace CalmanFiltering.Tests.Models
                .GetMovement(model.ModelingTime.Max, StartTime: model.ModelingTime.Min);
 
             Assert.That.Value(movement.Time)
-               .Where(time => time.Start).Check(start_time => start_time.IsEqual(model.ModelingTime.Min))
-               .Where(time => time.End).Check(end_time => end_time.IsEqual(model.ModelingTime.Max));
+               .Where(time => time.Start).CheckEquals(model.ModelingTime.Min)
+               .Where(time => time.End).CheckEquals(model.ModelingTime.Max);
 
             Assert.That.Value(movement.Position)
-               .Where(pos => pos.Start).Check(start_pos => start_pos.IsEqual(0))
-               .Where(pos => pos.End).Check(end_pos => end_pos.IsEqual(60, 1.49e-007));
+               .Where(pos => pos.Start).CheckEquals(0)
+               .Where(pos => pos.End).CheckEquals(60, 1.49e-007);
         }
 
         [TestMethod]

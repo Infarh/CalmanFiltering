@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.com/icons/"
         xmlns:l="clr-namespace:CalmanFiltering"
+        xmlns:oxy="http://oxyplot.org/wpf"
         Title="{Binding Title}"
         DataContext="{Binding MainModel, Source={StaticResource Locator}}"
         Width="800" Height="450">
@@ -13,6 +14,7 @@
             <MenuItem Header="Файл">
                 <MenuItem Header="Выход" Command="{CloseWindow}"/>
             </MenuItem>
+            <MenuItem Header="Вычислить" Command="{Binding Model.ComputeData}"/>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <StatusBarItem DockPanel.Dock="Right">
@@ -20,8 +22,19 @@
             </StatusBarItem>
             <StatusBarItem Content="{Binding Status}"/>
         </StatusBar>
-        <Grid>
+        <Grid DataContext="{Binding Model}">
+            <oxy:Plot DataContext="{Binding MovementData}">
+                <oxy:Plot.Axes>
+                    <oxy:LinearAxis Position="Left" PositionAtZeroCrossing="True" Title="A(t)" Key="Axeleration"/>
+                    <oxy:LinearAxis Position="Right" Title="V(t)" Key="Speed" AxislineStyle="Solid" AxislineThickness="2"/>
+                    <oxy:LinearAxis Position="Left" Title="X(t)" Key="Movement" AxislineStyle="Solid" AxislineThickness="2"/>
 
+                    <oxy:LinearAxis Position="Bottom" PositionAtZeroCrossing="True" Title="t [с]"/>
+                </oxy:Plot.Axes>
+                <oxy:LineSeries ItemsSource="{Binding Axeleration}" YAxisKey="Axeleration"/>
+                <oxy:LineSeries ItemsSource="{Binding Speed}" Color="Blue" YAxisKey="Speed"/>
+                <oxy:LineSeries ItemsSource="{Binding Movement}" Color="Black" YAxisKey="Movement"/>
+            </oxy:Plot>
         </Grid>
     </DockPanel>
 </Window>

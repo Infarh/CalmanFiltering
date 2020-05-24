@@ -48,6 +48,10 @@ namespace CalmanFiltering.Models
         /// <returns>Значение ускорения в указанный момент времени</returns>
         public double Axeleration(double t) => Speed1 * Normal(t, DeltaT1 * .5, t1) - Speed2 * Normal(t, DeltaT2 * .5, t2);
 
+        public Movement1D GetMovement() => GetMovement(ModelingTime);
+
+        public Movement1D GetMovement((double Min, double Max) Interval, double dt = 0.01) => GetMovement(Interval.Max, dt, ModelingTime.Min);
+
         public Movement1D GetMovement(double EndTime, double dt = 0.01, double StartTime = 0)
         {
             var total_time = EndTime - StartTime;

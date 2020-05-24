@@ -1,9 +1,13 @@
-﻿using MathCore.WPF.ViewModels;
+﻿using System.Windows.Input;
+using CalmanFiltering.Models;
+using MathCore.WPF.Commands;
+using MathCore.WPF.ViewModels;
 
 namespace CalmanFiltering.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+
         #region Title : string - Заголовок окна
 
         /// <summary>Заголовок окна</summary>
@@ -23,5 +27,9 @@ namespace CalmanFiltering.ViewModels
         public string Status { get => _Status; set => Set(ref _Status, value); }
 
         #endregion
+
+        public Moving1DViewModel Model { get; }
+
+        public MainWindowViewModel(Moving1DViewModel Model) => this.Model = Model;
     }
 }
