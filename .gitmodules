@@ -1,0 +1,9 @@
+[submodule "MathCore"]
+	path = MathCore
+	url = https://github.com/Infarh/MathCore
+[submodule "MathCore.WPF"]
+	path = MathCore.WPF
+	url = https://github.com/Infarh/MathCore.WPF
+[submodule "MathCore.DSP"]
+	path = MathCore.DSP
+	url = https://github.com/Infarh/MathCore.DSP
